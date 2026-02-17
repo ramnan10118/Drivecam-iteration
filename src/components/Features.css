@@ -1,0 +1,31 @@
+.fold-features {
+  min-height: 100vh; padding: 120px 24px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.fold-features h2 {
+  font-size: clamp(32px, 5vw, 56px); font-weight: 800;
+  letter-spacing: -2px; text-align: center; margin-bottom: 16px;
+}
+.fold-features > p {
+  font-size: 17px; color: rgba(255,255,255,0.4); text-align: center;
+  margin-bottom: 64px; max-width: 500px;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; max-width: 1000px; width: 100%;
+}
+.feature-card {
+  padding: 32px; border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.feature-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+}
+.feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.6; }

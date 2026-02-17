@@ -1,0 +1,12 @@
+.footer {
+  padding: 80px 24px 40px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-cta { font-size: clamp(24px, 4vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 24px; }
+.footer a {
+  display: inline-flex; padding: 14px 36px; border-radius: 100px;
+  background: #fff; color: #000; font-weight: 600; font-size: 15px;
+  text-decoration: none; transition: transform 0.3s;
+}
+.footer a:hover { transform: translateY(-2px); }
+.footer-sub { margin-top: 48px; font-size: 13px; color: rgba(255,255,255,0.2); }

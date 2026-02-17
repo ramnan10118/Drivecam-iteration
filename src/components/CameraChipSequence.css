@@ -1,0 +1,97 @@
+.fold-camera-chip {
+  height: 900vh;
+  position: relative;
+}
+.fold-camera-chip-sticky {
+  position: sticky; top: 0; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: #fff;
+}
+
+#seqCanvas {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 48% 50%;
+  max-width: 100%; max-height: 100%;
+  will-change: transform;
+  z-index: 1;
+}
+
+#seqVignette {
+  position: absolute; inset: 0; z-index: 2;
+  opacity: 0; pointer-events: none;
+  background: radial-gradient(circle at 48% 50%, transparent 0%, transparent 15%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.85) 65%, #000 80%);
+  will-change: opacity;
+}
+#seqDarkOverlay {
+  position: absolute; inset: 0; z-index: 3;
+  background: #000; opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+#chipBgImg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transform: scaleX(-1);
+  opacity: 0; z-index: 4;
+  will-change: transform, opacity;
+}
+#chipDarkOverlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 5; opacity: 0;
+  pointer-events: none;
+}
+#chipContent {
+  position: relative; z-index: 6;
+  display: flex; align-items: center; justify-content: center;
+  gap: 80px; max-width: 1100px; padding: 0 40px;
+  opacity: 0;
+}
+.chip-info {
+  max-width: 380px;
+}
+.chip-info h3 {
+  font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px;
+}
+.chip-info p {
+  font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+}
+.chip-info .stat {
+  font-size: 64px; font-weight: 800; color: #4ade80;
+  letter-spacing: -3px; line-height: 1; margin-bottom: 4px;
+}
+.chip-divider {
+  width: 1px; height: 140px;
+  background: linear-gradient(180deg, transparent, rgba(74,222,128,0.3), transparent);
+  flex-shrink: 0;
+}
+
+.seq-progress {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 7; display: flex; align-items: center; gap: 16px;
+}
+.seq-progress-bar {
+  width: 200px; height: 2px; background: rgba(0,0,0,0.08);
+  border-radius: 1px; overflow: hidden;
+}
+.seq-progress-fill {
+  height: 100%; width: 0%; background: #000;
+  transition: width 0.05s linear;
+}
+.seq-frame-count {
+  font-size: 12px; color: rgba(0,0,0,0.3);
+  font-family: monospace; letter-spacing: 1px;
+}
+
+.seq-loader {
+  position: absolute; z-index: 8; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); text-align: center;
+}
+.seq-loader-ring {
+  width: 40px; height: 40px; border: 2px solid rgba(0,0,0,0.08);
+  border-top-color: #000; border-radius: 50%;
+  animation: spin 0.8s linear infinite; margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.seq-loader p { font-size: 13px; color: rgba(0,0,0,0.4); }
