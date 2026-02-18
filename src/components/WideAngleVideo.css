@@ -1,0 +1,213 @@
+.fold-wideangle {
+  height: 700vh;
+  position: relative;
+}
+
+.fold-wideangle-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Frosted blurred background — fills entire viewport behind the clip */
+.wideangle-frosted {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.wideangle-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(30px) brightness(0.35);
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+/* The clipping wrapper — starts narrow, expands to full */
+.wideangle-clip {
+  width: 75%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  border: none;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-right: 1.5px solid rgba(255, 255, 255, 0.12);
+  will-change: width;
+  perspective: 4000px;
+}
+
+/* Flip card container */
+.flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Shared face styles */
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-front {
+  z-index: 2;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* 3D side edges on the card itself — perpendicular panels forming thickness */
+.flip-card::before,
+.flip-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background: linear-gradient(to right, #111, #2a2a2a, #111);
+}
+
+.flip-card::before {
+  left: 0;
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+
+.flip-card::after {
+  right: 0;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+
+.wideangle-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Text overlays */
+.wideangle-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+  padding: 0 20px;
+}
+
+.wideangle-text h2 {
+  font-size: clamp(40px, 8vw, 120px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+}
+
+.cabin-text h2 {
+  white-space: normal;
+}
+
+/* "Wider " — starts hidden, grows in from the left */
+.wa-prefix {
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  will-change: max-width, opacity;
+}
+
+.wa-core {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.wideangle-text .wideangle-sub {
+  font-size: clamp(14px, 2vw, 20px);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+.cabin-text .wideangle-sub {
+  opacity: 1;
+}
+
+/* Top badge */
+.wideangle-badge {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 8px;
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  font-size: 14px;
+  font-weight: 600;
+  color: #60a5fa;
+  letter-spacing: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Corner brackets for the narrow state */
+.wideangle-bracket {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.wideangle-bracket::before,
+.wideangle-bracket::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.bracket-tl { top: -1px; left: -1px; }
+.bracket-tl::before { top: 0; left: 0; width: 24px; height: 1.5px; }
+.bracket-tl::after { top: 0; left: 0; width: 1.5px; height: 24px; }
+
+.bracket-tr { top: -1px; right: -1px; }
+.bracket-tr::before { top: 0; right: 0; width: 24px; height: 1.5px; }
+.bracket-tr::after { top: 0; right: 0; width: 1.5px; height: 24px; }
+
+.bracket-bl { bottom: -1px; left: -1px; }
+.bracket-bl::before { bottom: 0; left: 0; width: 24px; height: 1.5px; }
+.bracket-bl::after { bottom: 0; left: 0; width: 1.5px; height: 24px; }
+
+.bracket-br { bottom: -1px; right: -1px; }
+.bracket-br::before { bottom: 0; right: 0; width: 24px; height: 1.5px; }
+.bracket-br::after { bottom: 0; right: 0; width: 1.5px; height: 24px; }

@@ -1,6 +1,6 @@
 import Hero from './components/Hero';
 import CameraChipSequence from './components/CameraChipSequence';
-import VideoFlip from './components/VideoFlip';
+import WideAngleVideo from './components/WideAngleVideo';
 import Features from './components/Features';
 import Installation from './components/Installation';
 import Footer from './components/Footer';
@@ -10,7 +10,7 @@ export default function App() {
     <>
       <Hero />
       <CameraChipSequence />
-      <VideoFlip />
+      <WideAngleVideo />
       <Features />
       <Installation />
       <Footer />
